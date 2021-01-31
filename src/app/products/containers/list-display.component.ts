@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import * as fromLayout from '../../reducers';
 import {Observable} from 'rxjs';
-import {GoogleBooksService} from '../services/google-books.service';
+
 
 @Component({
   selector: 'app-list-display',
@@ -18,7 +18,7 @@ export class ListDisplayComponent implements OnInit {
   readonly searchValue$: Observable<string> = this.store.pipe(select(fromLayout.selectSearchProduct));
 
   constructor(
-    private readonly store: Store<fromLayout.State>
+    private readonly store: Store<fromLayout.State>,
   ) {
   }
 
