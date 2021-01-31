@@ -1,3 +1,3 @@
 import {createAction, props} from '@ngrx/store';
 
-export const typeIntTheSearch = createAction('[Layout] Type in the searc', props<{searchValue: string}>());
+export const typeIntTheSearch = createAction('[Layout] Search for product', props<{ searchValue: string }>());

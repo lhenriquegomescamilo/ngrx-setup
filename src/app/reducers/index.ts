@@ -1,5 +1,5 @@
 import {InjectionToken} from '@angular/core';
-import {Action, ActionReducerMap} from '@ngrx/store';
+import {Action, ActionReducerMap, createFeatureSelector, createSelector} from '@ngrx/store';
 import * as fromRouter from '@ngrx/router-store';
 
 import * as fromLayout from '../shared/layout/reducers/layout.reducer';
@@ -18,11 +18,18 @@ export interface State {
  * These reducer functions are called with each dispatched action
  * and the current or initial state and return a new immutable state.
  */
-export const ROOT_REDUCERS = new InjectionToken<
-  ActionReducerMap<State, Action>
-  >('Root reducers token', {
+export const ROOT_REDUCERS = new InjectionToken<ActionReducerMap<State, Action>>('Root reducers token', {
   factory: () => ({
     [fromLayout.layoutFeatureKey]: fromLayout.reducer,
     router: fromRouter.routerReducer,
   }),
 });
+
+export const selectLayoutState = createFeatureSelector<State, fromLayout.State>(
+  fromLayout.layoutFeatureKey
+);
+
+export const selectSearchProduct = createSelector(
+  selectLayoutState,
+  fromLayout.searchForProduct
+);
