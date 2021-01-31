@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import * as fromLayout from '../../reducers';
 import {Observable} from 'rxjs';
+import {GoogleBooksService} from '../services/google-books.service';
 
 @Component({
   selector: 'app-list-display',

@@ -8,6 +8,8 @@ import {StoreModule} from '@ngrx/store';
 import {ROOT_REDUCERS} from './reducers';
 import {StoreRouterConnectingModule} from '@ngrx/router-store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {HttpClientModule} from '@angular/common/http';
+import {EffectsModule} from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     LayoutModule,
     /**
      * StoreModule.forRoot is imported once in the root module, accepting a reducer
@@ -28,7 +31,8 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({
       name: 'Demo Ngrx Setup App'
-    })
+    }),
+    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]
